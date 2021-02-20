@@ -1,5 +1,7 @@
 # ICDSS AI Hack 2021
 
+> Team ";)' DROP TABLE Teams;--"
+
 Submission for the [Imperial College Data Science Society AI Hack 2021](2021.aihack.org).
 
 Solving the Crop Yield Challenge.
