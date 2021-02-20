@@ -59,3 +59,8 @@ $RECYCLE.BIN/
 # End of https://www.toptal.com/developers/gitignore/api/macos,windows
 
 *.csv
+!allweather.csv
+
+node_modules
+yarn-error.log
+weather
