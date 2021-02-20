@@ -25,7 +25,7 @@ function App() {
         overflow: "hidden",
       }}
     >
-      <PageHeader title="Crop Yield Stats" subTitle="--drop something" />
+      <PageHeader title="Crop Yield Stats" subTitle=";)' DROP TABLE Teams;--" />
       <Row>
         <Col span={6}>
           <Card>

@@ -19,6 +19,7 @@
     }
   ],
   "start_url": ".",
+  "homepage": "http://dominikrys.com/icdss-hackathon-2021/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
