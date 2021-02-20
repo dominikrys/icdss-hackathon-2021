@@ -1,0 +1,13 @@
+{
+  "name": "icdss-hackathon-2021",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:dominikrys/icdss-hackathon-2021.git",
+  "author": "Tom Wiley <tomos.g.wiley@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "d3": "^6.5.0",
+    "geojson-geometries-lookup": "^0.5.0"
+  }
+}
