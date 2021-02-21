@@ -18,6 +18,7 @@
     "chroma-js": "^2.1.0",
     "d3": "^6.5.0",
     "react": "^17.0.1",
+    "react-colorscales": "^0.7.3",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.2",
     "react-simple-maps": "^2.3.0",

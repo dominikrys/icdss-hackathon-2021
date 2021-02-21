@@ -3,24 +3,37 @@ import React, { Dispatch } from "react";
 import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 import { geojson } from "./geojson";
 import { futureYield } from "./futureYield";
+import Title from "antd/lib/typography/Title";
+import { Typography } from "antd";
 
 interface Props {
   setContent: Dispatch<React.SetStateAction<string>>;
   data: any;
-  year: string;
+  historicYear: string;
+  predictionYear: string;
+  showPrediction: boolean;
 }
 
-export const Map: React.FC<Props> = ({ setContent, data, year }) => {
+export const Map: React.FC<Props> = ({
+  setContent,
+  data,
+  historicYear: year,
+  showPrediction,
+  predictionYear,
+}) => {
   const scale = chroma.scale(["white", "green"]);
 
   return (
     <>
+      <Typography >
+        <Title level={5}>{showPrediction ? predictionYear : year}</Title>
+      </Typography>
       <ComposableMap
         data-tip=""
         projection="geoAlbers"
         projectionConfig={{
-          scale: 4500,
-          rotate: [89, 0, 0],
+          scale: 4200,
+          rotate: [88.5, 0.2, 0],
         }}
       >
         <Geographies geography={geojson}>
@@ -30,7 +43,7 @@ export const Map: React.FC<Props> = ({ setContent, data, year }) => {
               let color = "#FF0000";
 
               const { name } = geo.properties;
-              if (year !== "2020") {
+              if (!showPrediction) {
                 if (data[year].counties[name.toUpperCase()]) {
                   countyYield = parseInt(
                     data[year].counties[name.toUpperCase()].ave
@@ -38,10 +51,11 @@ export const Map: React.FC<Props> = ({ setContent, data, year }) => {
                   color = scale((countyYield as number) / 250).hex();
                 }
               } else {
-                countyYield = parseInt((futureYield as any)[name.toUpperCase()]);
-                if(countyYield!= 0) {
+                countyYield = parseInt(
+                  (futureYield as any)[name.toUpperCase()]
+                );
+                if (countyYield !== 0) {
                   color = scale((countyYield as number) / 250).hex();
-
                 }
               }
 
@@ -52,7 +66,7 @@ export const Map: React.FC<Props> = ({ setContent, data, year }) => {
                   onMouseEnter={() => {
                     let content = name;
                     if (countyYield) {
-                      content += "\n" + "Yield: " + countyYield;
+                      content += " - Yield: " + countyYield;
                     }
                     setContent(content);
                   }}
@@ -62,12 +76,15 @@ export const Map: React.FC<Props> = ({ setContent, data, year }) => {
                   style={{
                     default: {
                       fill: color,
+                      outline: "none",
                     },
                     hover: {
                       fill: chroma(color).darken().hex(),
+                      outline: "none",
                     },
                     pressed: {
                       fill: chroma(color).darken().darken().hex(),
+                      outline: "none",
                     },
                   }}
                 />
