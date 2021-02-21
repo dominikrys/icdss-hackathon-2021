@@ -1,4 +1,4 @@
-import { Button, Card, Col, PageHeader, Row, Typography } from "antd";
+import { Button, Card, Col, Divider, PageHeader, Row, Typography } from "antd";
 import Title from "antd/lib/typography/Title";
 import React, { useEffect, useState } from "react";
 import ReactTooltip from "react-tooltip";
@@ -30,19 +30,21 @@ function App() {
       <PageHeader title="Crop Yield Stats" subTitle=";)' DROP TABLE Teams;--" />
       <Row>
         <Col span={6}>
-          <Card>
+          <Card style={{ overflowY: "auto", maxHeight: "calc(100vh - 64px)" }}>
             <Typography style={{ textAlign: "left" }}>
               <Title level={5}>Historic and predicted corn yield</Title>
               Each datapoint is measured in bushels/acre.
-            </Typography> 
+            </Typography>
             <br />
             <ColorScale />
             <Typography style={{ textAlign: "left" }}>
-              For historic data, any county colored red indicates that the dataset did not contain a seperate result for that county. <br />
-              For predicted data, we have used red to indicate a county with 0 predicted yield, as our model learnt to predict this from counties with no individual yield.
-            </Typography> 
-          </Card>
-          <Card>
+              For historic data, any county colored red indicates that the
+              dataset did not contain a seperate result for that county. <br />
+              For predicted data, we have used red to indicate a county with 0
+              predicted yield, as our model learnt to predict this from counties
+              with no individual yield.
+            </Typography>
+            <Divider />
             <Typography style={{ textAlign: "left" }}>
               <Title level={5}>Historic Yield: {historicYear}</Title>
               {Object.entries(historicYield).map((year) => (
@@ -58,8 +60,7 @@ function App() {
                 </Button>
               ))}
             </Typography>
-          </Card>
-          <Card>
+            <Divider />
             <Typography style={{ textAlign: "left" }}>
               <Title level={5}>2020 Predicted Yield</Title>
               <Button
@@ -78,9 +79,7 @@ function App() {
         <Col span={18}>
           <Card
             style={{
-              // minHeight: "calc((100vh - 54px)/1.5)",
-              // maxHeight: "calc((100vh - 54px)/1.05)",
-              height:"calc(100vh-64px)",
+              height: "calc(100vh-64px)",
               overflow: "hidden",
               maxWidth: "100%",
             }}
